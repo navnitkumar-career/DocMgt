@@ -5,9 +5,7 @@ import java.time.LocalDateTime;
 public class UserDTO {
 
 	int id;
-
 	String emailId;
-
 	LocalDateTime dateTime;
 
 	public int getId() {

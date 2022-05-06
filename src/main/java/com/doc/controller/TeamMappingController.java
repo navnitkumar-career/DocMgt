@@ -27,9 +27,9 @@ public class TeamMappingController {
 	}
 
 	@PostMapping(path = "add", produces = "application/json", consumes = "application/json")
-	public Map<String, String> Add(@RequestBody TeamMappingDTO team) {
+	public Map<String, String> add(@RequestBody TeamMappingDTO team) {
 		
-		teamMappingService.Add(team);
+		teamMappingService.add(team);
 
 		HashMap<String, String> map = new HashMap<>();
 		map.put("status", "success");
@@ -41,7 +41,7 @@ public class TeamMappingController {
 	@GetMapping(path = "delete", produces = "application/json")
 	public Map<String, String> delete(@RequestBody TeamMappingDTO teamMapping) {
 
-		teamMappingService.DeleteById(teamMapping);
+		teamMappingService.deleteById(teamMapping);
 
 		HashMap<String, String> map = new HashMap<>();
 		map.put("status", "success");

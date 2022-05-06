@@ -29,8 +29,8 @@ public class TeamController {
 	}
 
 	@PostMapping(path = "add", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<String> Add(@RequestBody TeamDTO team) {
-		boolean flag = teamService.Add(team);
+	public ResponseEntity<String> add(@RequestBody TeamDTO team) {
+		boolean flag = teamService.add(team);
 		if (flag) {
 			return ResponseEntity.ok("Added Successfully");
 		} else {
@@ -40,7 +40,7 @@ public class TeamController {
 
 	@GetMapping(path = "delete/{teamName}", produces = "application/json")
 	public ResponseEntity<String> delete(@PathVariable("teamName") String teamName) {
-		boolean flag = teamService.DeleteById(teamName);
+		boolean flag = teamService.deleteById(teamName);
 		if (flag) {
 			return ResponseEntity.ok("Deleted Successfully");
 		} else {
@@ -50,8 +50,8 @@ public class TeamController {
 	}
 
 	@PutMapping(path = "update", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<String> Update(@RequestBody TeamDTO team) {
-		boolean flag = teamService.Update(team);
+	public ResponseEntity<String> update(@RequestBody TeamDTO team) {
+		boolean flag = teamService.update(team);
 		if (flag) {
 			return ResponseEntity.ok("Update Successfully");
 		} else {

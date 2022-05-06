@@ -47,7 +47,7 @@ public class UserServiceimpl implements UserService {
 
 	@Transactional
 	@Override
-	public boolean Add(UserDTO userAdd) {
+	public boolean add(UserDTO userAdd) {
 		List<Users> userList = userRepository.findAll();
 
 		boolean flag = false;
@@ -76,7 +76,7 @@ public class UserServiceimpl implements UserService {
 
 	@Transactional
 	@Override
-	public boolean Update(UserDTO userEdit) {
+	public boolean update(UserDTO userEdit) {
 		List<Users> userList = userRepository.findAll();
 		boolean flag = false;
 
@@ -100,7 +100,7 @@ public class UserServiceimpl implements UserService {
 	}
 
 	@Override
-	public boolean DeleteById(String emailId) {
+	public boolean deleteById(String emailId) {
 		Users user = userRepository.findByEmailId(emailId);
 		if (user == null) {
 			return false;

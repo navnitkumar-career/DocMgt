@@ -56,7 +56,7 @@ public class TeamMappingServiceimpl implements TeamMappingService {
 
 	@Transactional
 	@Override
-	public TeamMappingDTO Add(TeamMappingDTO teamMappingAdd) {
+	public TeamMappingDTO add(TeamMappingDTO teamMappingAdd) {
 		
 		TeamMapping team = new TeamMapping();
 	
@@ -79,7 +79,7 @@ public class TeamMappingServiceimpl implements TeamMappingService {
 
 	@Transactional
 	@Override
-	public void DeleteById(TeamMappingDTO teamMapping) {
+	public void deleteById(TeamMappingDTO teamMapping) {
 
 		TeamMapping team = new TeamMapping();
 

@@ -8,10 +8,10 @@ public interface TeamService {
 	
 	public List<TeamDTO> getList();
 
-	public boolean  Update(TeamDTO team);
+	public boolean update(TeamDTO team);
 
-	public boolean Add(TeamDTO team);
+	public boolean add(TeamDTO team);
 
-	public boolean DeleteById(String teamName);
+	public boolean deleteById(String teamName);
 	
 }

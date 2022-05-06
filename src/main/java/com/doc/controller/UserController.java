@@ -31,9 +31,9 @@ public class UserController {
 	}
 
 	@PostMapping(path = "add", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<String> Add(@Valid @RequestBody UserDTO user) {
+	public ResponseEntity<String> add(@Valid @RequestBody UserDTO user) {
 		if (userService.validRequest(user)) {
-			boolean flag = userService.Add(user);
+			boolean flag = userService.add(user);
 			if (flag) {
 				return ResponseEntity.ok("User is added.");
 			} else {
@@ -45,10 +45,10 @@ public class UserController {
 	}
 
 	@PutMapping(path = "update", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<String> Update(@Valid @RequestBody UserDTO user) {
+	public ResponseEntity<String> update(@Valid @RequestBody UserDTO user) {
 
 		if (userService.validRequest(user)) {
-			boolean flag = userService.Update(user);
+			boolean flag = userService.update(user);
 			if (flag) {
 				return ResponseEntity.ok("User is Updated.");
 			} else {
@@ -61,7 +61,7 @@ public class UserController {
 
 	@GetMapping(path = "delete/{emailId}", produces = "application/json")
 	public ResponseEntity<String> delete(@PathVariable("emailId") String emailId) {
-		boolean flag = userService.DeleteById(emailId);
+		boolean flag = userService.deleteById(emailId);
 		if (flag) {
 			return ResponseEntity.ok("Deleted Successfully");
 		} else {

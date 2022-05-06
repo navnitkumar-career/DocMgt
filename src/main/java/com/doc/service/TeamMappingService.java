@@ -7,8 +7,8 @@ public interface TeamMappingService {
 	
 	public List<TeamMappingDTO> getList();
 
-	public TeamMappingDTO Add(TeamMappingDTO teamMapping);
+	public TeamMappingDTO add(TeamMappingDTO teamMapping);
 
-	void DeleteById(TeamMappingDTO teamMapping);
+	void deleteById(TeamMappingDTO teamMapping);
 
 }

@@ -8,11 +8,11 @@ public interface UserService {
 	
 	public List<UserDTO> getList();
 
-	public boolean Update(UserDTO user);
+	public boolean update(UserDTO user);
 
-	public boolean Add(UserDTO user);
+	public boolean add(UserDTO user);
 
-	public boolean DeleteById(String emailId);
+	public boolean deleteById(String emailId);
 	
 	public boolean validRequest(UserDTO user);
 

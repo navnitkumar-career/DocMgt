@@ -41,7 +41,7 @@ public class TeamServiceimpl implements TeamService {
 
 	@Transactional
 	@Override
-	public boolean Add(TeamDTO teamAdd) {
+	public boolean add(TeamDTO teamAdd) {
 		List<Team> teamList = teamRepository.findAll();
 
 		boolean flag = false;
@@ -70,7 +70,7 @@ public class TeamServiceimpl implements TeamService {
 
 	@Transactional
 	@Override
-	public boolean Update(TeamDTO teamEdit) {
+	public boolean update(TeamDTO teamEdit) {
 		List<Team> teamList = teamRepository.findAll();
 		boolean flag = false;
 
@@ -93,7 +93,7 @@ public class TeamServiceimpl implements TeamService {
 	}
 
 	@Override
-	public boolean DeleteById(String teamName) {
+	public boolean deleteById(String teamName) {
 		Team team = teamRepository.findByTeamName(teamName);
 
 		if (team == null) {
