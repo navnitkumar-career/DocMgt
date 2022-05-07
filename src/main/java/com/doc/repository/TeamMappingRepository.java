@@ -17,13 +17,10 @@ public interface TeamMappingRepository extends JpaRepository<TeamMapping, Intege
 	@Query(value = "delete from team_mapping where users_id = :userId  and team_id = :teamId", nativeQuery = true)
 	void deleteTeamMappingByUserIdAndTeamId(@Param("userId") int userId, @Param("teamId") int teamId);
 	
-	
 	@Modifying
 	@Query(value = "select count(*) as count from team_mapping where users_id= :userId and team_id= :teamId", nativeQuery = true)
 	List<Integer> getCountByTeamIdAndEmailId(@Param("userId") int userId, @Param("teamId") int teamId);
 
-
-	
 	@Modifying
 	@Query(value = "select count(*) as count from team_mapping where users_id = :userId", nativeQuery = true)
 	List<Integer> getCountByEmailId(@Param("userId") int userId);

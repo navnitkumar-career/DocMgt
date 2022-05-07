@@ -28,7 +28,6 @@ public class TeamServiceimpl implements TeamService {
 	public List<TeamDTO> getList() {
 
 		List<Team> teamList = teamRepository.findAll();
-
 		List<TeamDTO> team = teamList.stream().map(t -> {
 			TeamDTO teams = new TeamDTO();
 
@@ -36,14 +35,12 @@ public class TeamServiceimpl implements TeamService {
 			return teams;
 		}).collect(Collectors.toList());
 		return team;
-
 	}
 
 	@Transactional
 	@Override
 	public boolean add(TeamDTO teamAdd) {
 		List<Team> teamList = teamRepository.findAll();
-
 		boolean flag = false;
 
 		for (Team team : teamList) {
@@ -54,7 +51,6 @@ public class TeamServiceimpl implements TeamService {
 				flag = true;
 			}
 		}
-
 		if (flag) {
 			Team team = new Team();
 			modelMapper.map(teamAdd, team);
@@ -64,7 +60,6 @@ public class TeamServiceimpl implements TeamService {
 		}
 		return flag;
 	}
-
 
 	@Transactional
 	@Override
@@ -78,7 +73,6 @@ public class TeamServiceimpl implements TeamService {
 			} else {
 				flag = true;
 			}
-
 		}
 		if (flag) {
 			Team team1 = teamRepository.findById(teamEdit.getId()).get();
@@ -93,14 +87,11 @@ public class TeamServiceimpl implements TeamService {
 	@Override
 	public boolean deleteById(String teamName) {
 		Team team = teamRepository.findByTeamName(teamName);
-
 		if (team == null) {
 			return false;
 		} else {
 			teamRepository.deleteById(team.getId());
 			return true;
 		}
-
 	}
-
 }

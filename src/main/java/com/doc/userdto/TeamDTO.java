@@ -1,6 +1,7 @@
 package com.doc.userdto;
 
 public class TeamDTO {
+	
 	int id;
 	String teamName;
 

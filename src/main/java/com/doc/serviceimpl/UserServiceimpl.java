@@ -34,22 +34,18 @@ public class UserServiceimpl implements UserService {
 	public List<UserDTO> getList() {
 
 		List<Users> userList = userRepository.findAll();
-
 		List<UserDTO> user = userList.stream().map(t -> {
 			UserDTO users = new UserDTO();
-
 			modelMapper.map(t, users);
 			return users;
 		}).collect(Collectors.toList());
 		return user;
-
 	}
 
 	@Transactional
 	@Override
 	public boolean add(UserDTO userAdd) {
 		List<Users> userList = userRepository.findAll();
-
 		boolean flag = false;
 
 		for (Users user1 : userList) {
@@ -60,7 +56,6 @@ public class UserServiceimpl implements UserService {
 				flag = true;
 			}
 		}
-
 		if (flag) {
 			Users user = new Users();
 			modelMapper.map(userAdd, user);
@@ -93,7 +88,6 @@ public class UserServiceimpl implements UserService {
 			user.setEmailId(userEdit.getEmailId());
 			userRepository.save(user);
 			modelMapper.map(user, userEdit);
-			
 		}
 		return flag;
 	}
@@ -107,7 +101,6 @@ public class UserServiceimpl implements UserService {
 			userRepository.deleteById(user.getId());
 			return true;
 		}
-
 	}
 
 	@Override
@@ -119,5 +112,4 @@ public class UserServiceimpl implements UserService {
 		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailId);
 		return matcher.matches();
 	}
-
 }

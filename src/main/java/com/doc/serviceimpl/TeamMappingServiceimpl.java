@@ -48,7 +48,6 @@ public class TeamMappingServiceimpl implements TeamMappingService {
 			modelMapper.map(t, teams);
 			teams.setUserId(t.getUsers().getId());
 			teams.setEmailId(t.getUsers().getEmailId());
-
 			return teams;
 		}).collect(Collectors.toList());
 		return team;
@@ -66,12 +65,12 @@ public class TeamMappingServiceimpl implements TeamMappingService {
 
 		Users u1 = userRepository.findByEmailId(teamMappingAdd.getEmailId());
 		team.setUsers(u1);
-
 		if (t1 == null || u1 == null) {
 			map.put("fail", "Either Team or Email ID does not exists.");
 			return map;
 		}
-		int count = teamMappingRepository.getCountByTeamIdAndEmailId(team.getUsers().getId(), team.getTeam().getId()).get(0);
+		int count = teamMappingRepository.getCountByTeamIdAndEmailId(team.getUsers().getId(), team.getTeam().getId())
+				.get(0);
 
 		if (count == 0) {
 			teamMappingRepository.save(team);
@@ -93,14 +92,11 @@ public class TeamMappingServiceimpl implements TeamMappingService {
 		team.setTeam(t1);
 		Users u1 = userRepository.findByEmailId(teamMapping.getEmailId());
 		team.setUsers(u1);
-		
 		if (t1 == null || u1 == null) {
 			map.put("fail", "Either Team or Email ID does not exists.");
 			return map;
 		}
-		
 		int count = teamMappingRepository.getCountByEmailId(team.getUsers().getId()).get(0);
-		
 		if (count > 1) {
 			teamMappingRepository.deleteTeamMappingByUserIdAndTeamId(team.getUsers().getId(), team.getTeam().getId());
 			map.put("success", "Team Mapping Record Deleted Successfully.");
@@ -109,7 +105,5 @@ public class TeamMappingServiceimpl implements TeamMappingService {
 			map.put("fail", "Problem while deleting team mapping. User should have atleast one team.");
 			return map;
 		}
-
 	}
-
 }

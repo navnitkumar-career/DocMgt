@@ -21,7 +21,6 @@ public class Users {
 	@Column(name="datetime")
 	LocalDateTime dateTime;
 	
-
 	public int getId() {
 		return id;
 	}
@@ -44,6 +43,15 @@ public class Users {
 
 	public void setDateTime(LocalDateTime localDateTime) {
 		this.dateTime = localDateTime;
+	}
+	
+	public Users() {
+		super();
+	}
+	
+	public Users(String emailId) {
+		super();
+		this.emailId = emailId;
 	}
 
 	@Override
