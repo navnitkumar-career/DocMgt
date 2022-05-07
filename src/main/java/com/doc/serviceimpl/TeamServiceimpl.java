@@ -47,7 +47,7 @@ public class TeamServiceimpl implements TeamService {
 		boolean flag = false;
 
 		for (Team team : teamList) {
-			if (team.getTeamName().equals(teamAdd.getTeamName())) {
+			if (team.getTeamName().toLowerCase().equals(teamAdd.getTeamName().toLowerCase())) {
 				flag = false;
 				break;
 			} else {
@@ -58,10 +58,8 @@ public class TeamServiceimpl implements TeamService {
 		if (flag) {
 			Team team = new Team();
 			modelMapper.map(teamAdd, team);
-
 			teamRepository.save(team);
 			modelMapper.map(team, teamAdd);
-
 			return flag;
 		}
 		return flag;

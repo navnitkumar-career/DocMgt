@@ -53,7 +53,7 @@ public class UserServiceimpl implements UserService {
 		boolean flag = false;
 
 		for (Users user1 : userList) {
-			if (user1.getEmailId().equals(userAdd.getEmailId())) {
+			if (user1.getEmailId().toLowerCase().equals(userAdd.getEmailId().toLowerCase())) {
 				flag = false;
 				break;
 			} else {
@@ -62,7 +62,6 @@ public class UserServiceimpl implements UserService {
 		}
 
 		if (flag) {
-			System.out.println("not same");
 			Users user = new Users();
 			modelMapper.map(userAdd, user);
 
