@@ -7,6 +7,17 @@ public class UserDTO {
 	int id;
 	String emailId;
 	LocalDateTime dateTime;
+	
+	public UserDTO() {
+		super();
+	}
+	
+	public UserDTO(int id, String emailId, LocalDateTime dateTime) {
+		super();
+		this.id = id;
+		this.emailId = emailId;
+		this.dateTime = dateTime;
+	}
 
 	public int getId() {
 		return id;

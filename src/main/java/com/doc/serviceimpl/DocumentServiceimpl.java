@@ -28,7 +28,7 @@ public class DocumentServiceimpl implements DocumentService {
 	ModelMapper modelMapper;
 
 	@Override
-	public boolean upload(String fileData, String emailId, String fileName) {
+	public void upload(String fileData, String emailId, String fileName) {
 		Document doc = new Document();
 		Users user = userRepository.findByEmailId(emailId);
 		doc.setUsers(user);
@@ -39,7 +39,6 @@ public class DocumentServiceimpl implements DocumentService {
 		doc.setDocData(completeData);
 		doc.setFileName(fileName);
 		documentRepository.save(doc);
-		return false;
 	}
 
 	@Override
