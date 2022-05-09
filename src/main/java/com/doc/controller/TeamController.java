@@ -55,7 +55,7 @@ public class TeamController {
 		if (flag) {
 			return ResponseEntity.ok("Update Successfully");
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Team Name already exist.");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Either ID or TeamName does not exists.");
 		}
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface DocumentService {
 
-	public void upload(String fileData, String emailId, String fileName);
+	public boolean upload(String fileData, String emailId, String fileName);
 	
 	public Map<String, Integer> wordCount(String fileData);
 	

@@ -1,6 +1,7 @@
 package com.doc.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
@@ -44,6 +45,7 @@ public class DocumentControllerTest {
 	            "This is a dummy file content".getBytes(StandardCharsets.UTF_8));
 		
         when(docRepository.findAll()).thenReturn(null);
+        when(docService.upload(anyString(), anyString(), anyString())).thenReturn(true);
         
         ResponseEntity<String> responseEntity = docController.upload(file, "test@gmail.com");
         assertThat(responseEntity.getStatusCodeValue()).isEqualTo(200);

@@ -40,8 +40,12 @@ public class DocumentController {
 				byte[] bytes = file.getBytes();
 				String fileData = new String(bytes);
 				fileData.replaceAll("\\s", "").replaceAll("[^a-zA-Z0-9]", " ");
-				documentService.upload(fileData, emailId, file.getOriginalFilename());
-				return ResponseEntity.status(HttpStatus.OK).body("File is uploaded Successfully.");
+				boolean flag = documentService.upload(fileData, emailId, file.getOriginalFilename());
+				if(flag) {
+					return ResponseEntity.status(HttpStatus.OK).body("File is uploaded Successfully.");
+				} else {
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email ID does not exist.");
+				}
 			} else {
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("File is already exist.");
 			}
