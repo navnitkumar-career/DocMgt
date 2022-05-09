@@ -4,6 +4,16 @@ public class TeamDTO {
 	
 	int id;
 	String teamName;
+	
+	public TeamDTO() {
+		super();
+	}
+
+	public TeamDTO(int id, String teamName) {
+		super();
+		this.id = id;
+		this.teamName = teamName;
+	}
 
 	public int getId() {
 		return id;

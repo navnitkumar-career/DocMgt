@@ -7,6 +7,19 @@ public class TeamMappingDTO {
 	String teamName;
 	int userId;
 	String emailId;
+	
+	public TeamMappingDTO() {
+		super();
+	}
+
+	public TeamMappingDTO(int id, int teamId, String teamName, int userId, String emailId) {
+		super();
+		this.id = id;
+		this.teamId = teamId;
+		this.teamName = teamName;
+		this.userId = userId;
+		this.emailId = emailId;
+	}
 
 	public int getId() {
 		return id;

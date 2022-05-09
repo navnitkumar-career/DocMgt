@@ -13,6 +13,15 @@ public class Team {
 	int id;
 	String teamName;
 	
+	public Team() {
+		super();
+	}
+	
+	public Team(String teamName) {
+		super();
+		this.teamName = teamName;
+	}
+
 	public int getId() {
 		return id;
 	}

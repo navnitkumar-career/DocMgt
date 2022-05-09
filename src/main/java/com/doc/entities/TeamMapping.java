@@ -20,6 +20,16 @@ public class TeamMapping {
 
 	@ManyToOne
 	Team team;
+	
+	public TeamMapping() {
+		super();
+	}
+
+	public TeamMapping(Users users, Team team) {
+		super();
+		this.users = users;
+		this.team = team;
+	}
 
 	public int getId() {
 		return id;

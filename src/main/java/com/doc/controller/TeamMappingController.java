@@ -39,7 +39,7 @@ public class TeamMappingController {
 
 	@GetMapping(path = "delete", produces = "application/json")
 	public ResponseEntity<String> delete(@RequestBody TeamMappingDTO teamMapping) {
-		Map<String, String> map=teamMappingService.deleteById(teamMapping);	
+		Map<String, String> map = teamMappingService.deleteById(teamMapping);	
 		if (map.containsKey("success")) {
 			return ResponseEntity.ok(map.get("success"));
 		} else {

@@ -68,12 +68,14 @@ public class DocumentController {
 	private boolean checkFileValidation(String fileName) {
 		boolean flag = false;
 		List<Document> document = documentRepository.findAll();
-		for (Document doc : document) {
-			if (doc.getFileName().equalsIgnoreCase(fileName)) {
-				flag = true;
-				break;
-			} else {
-				flag = false;
+		if(document != null) {
+			for (Document doc : document) {
+				if (doc.getFileName().equalsIgnoreCase(fileName)) {
+					flag = true;
+					break;
+				} else {
+					flag = false;
+				}
 			}
 		}
 		return flag;
