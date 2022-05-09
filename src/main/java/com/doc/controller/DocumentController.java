@@ -37,15 +37,7 @@ public class DocumentController {
 			@RequestParam("emailId") String emailId) throws IOException {
 		try {
 			if (!checkFileValidation(file.getOriginalFilename())) {
-				byte[] bytes = file.getBytes();
-				String fileData = new String(bytes);
-				fileData.replaceAll("\\s", "").replaceAll("[^a-zA-Z0-9]", " ");
-				boolean flag = documentService.upload(fileData, emailId, file.getOriginalFilename());
-				if(flag) {
-					return ResponseEntity.status(HttpStatus.OK).body("File is uploaded Successfully.");
-				} else {
-					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email ID does not exist.");
-				}
+				return fileUpload(file, emailId);
 			} else {
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("File is already exist.");
 			}
@@ -66,6 +58,18 @@ public class DocumentController {
 		} else {
 			response.setStatus(200);
 			response.getWriter().println(map);
+		}
+	}
+	
+	private ResponseEntity<String> fileUpload(MultipartFile file, String emailId) throws IOException {
+		byte[] bytes = file.getBytes();
+		String fileData = new String(bytes);
+		fileData.replaceAll("\\s", "").replaceAll("[^a-zA-Z0-9]", " ");
+		boolean flag = documentService.upload(fileData, emailId, file.getOriginalFilename());
+		if(flag) {
+			return ResponseEntity.status(HttpStatus.OK).body("File is uploaded Successfully.");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email ID does not exist.");
 		}
 	}
 
