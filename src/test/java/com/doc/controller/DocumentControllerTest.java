@@ -1,15 +1,11 @@
 package com.doc.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
@@ -20,19 +16,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.doc.entities.Team;
-import com.doc.entities.TeamMapping;
-import com.doc.entities.Users;
 import com.doc.repository.DocumentRepository;
 import com.doc.service.DocumentService;
-import com.doc.service.TeamMappingService;
-import com.doc.userdto.TeamMappingDTO;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
