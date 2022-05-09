@@ -73,15 +73,17 @@ public class DocumentServiceimpl implements DocumentService {
 		List<Document> doc = documentRepository.findAll();
 		Map<String, String> map = new HashMap<>();
 		boolean flag = false;
-		for (Document document : doc) {
-			if (document.getFileName().equalsIgnoreCase(fileName)) {
-				flag = true;
-				break;
-			} else {
-				flag = false;
-
+		if(doc != null) {
+			for (Document document : doc) {
+				if (document.getFileName().equalsIgnoreCase(fileName)) {
+					flag = true;
+					break;
+				} else {
+					flag = false;
+				}
 			}
 		}
+		
 		if (flag) {
 			documentRepository.deleteDocumentByFileName(fileName);
 			map.put("success", "Document File Deleted Successfully.");

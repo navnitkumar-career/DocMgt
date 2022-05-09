@@ -46,16 +46,19 @@ public class UserServiceimpl implements UserService {
 	@Override
 	public boolean add(UserDTO userAdd) {
 		List<Users> userList = userRepository.findAll();
-		boolean flag = false;
+		boolean flag = true;
 
-		for (Users user1 : userList) {
-			if (user1.getEmailId().toLowerCase().equals(userAdd.getEmailId().toLowerCase())) {
-				flag = false;
-				break;
-			} else {
-				flag = true;
+		if(userList != null) {
+			for (Users user1 : userList) {
+				if (user1.getEmailId().toLowerCase().equals(userAdd.getEmailId().toLowerCase())) {
+					flag = false;
+					break;
+				} else {
+					flag = true;
+				}
 			}
 		}
+		
 		if (flag) {
 			Users user = new Users();
 			modelMapper.map(userAdd, user);
@@ -72,14 +75,16 @@ public class UserServiceimpl implements UserService {
 	@Override
 	public boolean update(UserDTO userEdit) {
 		List<Users> userList = userRepository.findAll();
-		boolean flag = false;
+		boolean flag = true;
 
-		for (Users user1 : userList) {
-			if (user1.getEmailId().equals(userEdit.getEmailId())) {
-				flag = false;
-				break;
-			} else {
-				flag = true;
+		if(userList != null) {
+			for (Users user1 : userList) {
+				if (user1.getEmailId().equals(userEdit.getEmailId())) {
+					flag = false;
+					break;
+				} else {
+					flag = true;
+				}
 			}
 		}
 

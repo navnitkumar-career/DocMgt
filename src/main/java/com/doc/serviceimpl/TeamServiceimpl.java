@@ -37,20 +37,24 @@ public class TeamServiceimpl implements TeamService {
 		return team;
 	}
 
+	
 	@Transactional
 	@Override
 	public boolean add(TeamDTO teamAdd) {
 		List<Team> teamList = teamRepository.findAll();
-		boolean flag = false;
+		boolean flag = true;
 
-		for (Team team : teamList) {
-			if (team.getTeamName().toLowerCase().equals(teamAdd.getTeamName().toLowerCase())) {
-				flag = false;
-				break;
-			} else {
-				flag = true;
+		if(teamList != null) {
+			for (Team team : teamList) {
+				if (team.getTeamName().toLowerCase().equals(teamAdd.getTeamName().toLowerCase())) {
+					flag = false;
+					break;
+				} else {
+					flag = true;
+				}
 			}
 		}
+		
 		if (flag) {
 			Team team = new Team();
 			modelMapper.map(teamAdd, team);
