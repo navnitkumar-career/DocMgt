@@ -1,5 +1,6 @@
 package com.doc.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class Document {
 	@ManyToOne
 	Users users;
 
+	@Column(columnDefinition="LONGTEXT")
 	String docData;
 	
 	String fileName;

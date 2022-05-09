@@ -51,15 +51,17 @@ public class DocumentServiceimpl implements DocumentService {
 			String wordArray[] = doc.getDocData().toString().trim().split(" ");
 
 			for (int i = 0; i < wordArray.length; i++) {
+				wordArray[i] = wordArray[i].replace("\n", "").replace("\r", "").replace(",", " ").replace("'", " ").replace(":", " ").replace("?", " ").replace(".", " ").replace("’", "")
+						.replace("'", "").replace("’", "").toLowerCase().trim();
 				if (!wordArray[i].equalsIgnoreCase("The") && !wordArray[i].equalsIgnoreCase("Me")
 						&& !wordArray[i].equalsIgnoreCase("You") && !wordArray[i].equalsIgnoreCase("I")
 						&& !wordArray[i].equalsIgnoreCase("Of") && !wordArray[i].equalsIgnoreCase("And")
 						&& !wordArray[i].equalsIgnoreCase("A") && !wordArray[i].equalsIgnoreCase("We")
-						&& !wordArray[i].equalsIgnoreCase("")) {
+						&& !wordArray[i].equalsIgnoreCase("") && !wordArray[i].equalsIgnoreCase(" ")) {
 					if (map.containsKey(wordArray[i])) {
-						map.put(wordArray[i].replace("\n", "").replace("\r", ""), map.get(wordArray[i]) + 1);
+						map.put(wordArray[i].replace("\\?", " ").trim(), map.get(wordArray[i]) + 1);
 					} else {
-						map.put(wordArray[i].replace("\n", "").replace("\r", ""), 1);
+						map.put(wordArray[i].replace("\\?", " ").trim(), 1);
 					}
 				}
 			}
