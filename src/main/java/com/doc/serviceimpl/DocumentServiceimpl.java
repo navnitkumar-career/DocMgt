@@ -32,7 +32,6 @@ public class DocumentServiceimpl implements DocumentService {
 		Document doc = new Document();
 		Users user = userRepository.findByEmailId(emailId);
 		
-		System.out.println(user);
 		if (user == null) {
 			return false;
 		} else {
