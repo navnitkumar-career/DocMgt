@@ -13,13 +13,13 @@ public class Users {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	private int id;
 	
 	@Column
-	String emailId;
+	private String emailId;
 	
 	@Column(name="datetime")
-	LocalDateTime dateTime;
+	private LocalDateTime dateTime;
 	
 	public int getId() {
 		return id;

@@ -10,8 +10,8 @@ public class Team {
 	
 	@Id
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
-	int id;
-	String teamName;
+	private int id;
+	private String teamName;
 	
 	public Team() {
 		super();

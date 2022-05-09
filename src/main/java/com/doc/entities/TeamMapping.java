@@ -13,13 +13,13 @@ public class TeamMapping {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	private int id;
 
 	@ManyToOne
-	Users users;
+	private Users users;
 
 	@ManyToOne
-	Team team;
+	private Team team;
 	
 	public TeamMapping() {
 		super();

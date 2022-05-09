@@ -12,15 +12,15 @@ public class Document {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	private int id;
 
 	@ManyToOne
-	Users users;
+	private Users users;
 
 	@Column(columnDefinition="LONGTEXT")
-	String docData;
+	private String docData;
 	
-	String fileName;
+	private String fileName;
 
 	public int getId() {
 		return id;
