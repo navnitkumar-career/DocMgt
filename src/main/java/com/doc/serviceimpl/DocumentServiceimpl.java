@@ -28,17 +28,24 @@ public class DocumentServiceimpl implements DocumentService {
 	ModelMapper modelMapper;
 
 	@Override
-	public void upload(String fileData, String emailId, String fileName) {
+	public boolean upload(String fileData, String emailId, String fileName) {
 		Document doc = new Document();
 		Users user = userRepository.findByEmailId(emailId);
-		doc.setUsers(user);
-		byte[] bytes;
-		bytes = fileData.getBytes();
-		String completeData = new String(bytes);
-		completeData.replaceAll("\\s", "").replaceAll("[^a-zA-Z0-9]", " ");
-		doc.setDocData(completeData);
-		doc.setFileName(fileName);
-		documentRepository.save(doc);
+		
+		System.out.println(user);
+		if (user == null) {
+			return false;
+		} else {
+			doc.setUsers(user);
+			byte[] bytes;
+			bytes = fileData.getBytes();
+			String completeData = new String(bytes);
+			completeData.replaceAll("\\s", "").replaceAll("[^a-zA-Z0-9]", " ");
+			doc.setDocData(completeData);
+			doc.setFileName(fileName);
+			documentRepository.save(doc);
+			return true;
+		}
 	}
 
 	@Override
@@ -73,7 +80,7 @@ public class DocumentServiceimpl implements DocumentService {
 		List<Document> doc = documentRepository.findAll();
 		Map<String, String> map = new HashMap<>();
 		boolean flag = false;
-		if(doc != null) {
+		if (doc != null) {
 			for (Document document : doc) {
 				if (document.getFileName().equalsIgnoreCase(fileName)) {
 					flag = true;
@@ -83,7 +90,7 @@ public class DocumentServiceimpl implements DocumentService {
 				}
 			}
 		}
-		
+
 		if (flag) {
 			documentRepository.deleteDocumentByFileName(fileName);
 			map.put("success", "Document File Deleted Successfully.");

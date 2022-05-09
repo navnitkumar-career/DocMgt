@@ -52,7 +52,7 @@ public class UserController {
 			if (flag) {
 				return ResponseEntity.ok("User is Updated.");
 			} else {
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email Id already exist.");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID does not exists or EmailId already exist.");
 			}
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email Id is not valid or blank.");

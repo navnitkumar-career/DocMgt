@@ -37,14 +37,13 @@ public class TeamServiceimpl implements TeamService {
 		return team;
 	}
 
-	
 	@Transactional
 	@Override
 	public boolean add(TeamDTO teamAdd) {
 		List<Team> teamList = teamRepository.findAll();
 		boolean flag = true;
 
-		if(teamList != null) {
+		if (teamList != null) {
 			for (Team team : teamList) {
 				if (team.getTeamName().toLowerCase().equals(teamAdd.getTeamName().toLowerCase())) {
 					flag = false;
@@ -54,7 +53,7 @@ public class TeamServiceimpl implements TeamService {
 				}
 			}
 		}
-		
+
 		if (flag) {
 			Team team = new Team();
 			modelMapper.map(teamAdd, team);
@@ -70,20 +69,30 @@ public class TeamServiceimpl implements TeamService {
 	public boolean update(TeamDTO teamEdit) {
 		List<Team> teamList = teamRepository.findAll();
 		boolean flag = false;
+		boolean idFlag = false;
+		boolean teamFlag = false;
 
 		for (Team team : teamList) {
 			if (team.getTeamName().equals(teamEdit.getTeamName())) {
-				flag = false;
+				teamFlag = false;
+				break;
 			} else {
-				flag = true;
+				teamFlag = true;
 			}
 		}
-		if (flag) {
+		for (Team team : teamList) {
+			if (team.getId() != teamEdit.getId()) {
+				idFlag = false;
+			} else {
+				idFlag = true;
+				break;
+			}
+		}
+		if (teamFlag && idFlag) {
 			Team team1 = teamRepository.findById(teamEdit.getId()).get();
 			modelMapper.map(teamEdit, team1);
-
 			teamRepository.save(team1);
-			modelMapper.map(team1, teamEdit);
+			flag = true;
 		}
 		return flag;
 	}

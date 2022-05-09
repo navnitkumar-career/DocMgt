@@ -48,7 +48,7 @@ public class UserServiceimpl implements UserService {
 		List<Users> userList = userRepository.findAll();
 		boolean flag = true;
 
-		if(userList != null) {
+		if (userList != null) {
 			for (Users user1 : userList) {
 				if (user1.getEmailId().toLowerCase().equals(userAdd.getEmailId().toLowerCase())) {
 					flag = false;
@@ -58,7 +58,7 @@ public class UserServiceimpl implements UserService {
 				}
 			}
 		}
-		
+
 		if (flag) {
 			Users user = new Users();
 			modelMapper.map(userAdd, user);
@@ -75,24 +75,31 @@ public class UserServiceimpl implements UserService {
 	@Override
 	public boolean update(UserDTO userEdit) {
 		List<Users> userList = userRepository.findAll();
-		boolean flag = true;
-
-		if(userList != null) {
-			for (Users user1 : userList) {
-				if (user1.getEmailId().equals(userEdit.getEmailId())) {
-					flag = false;
-					break;
-				} else {
-					flag = true;
-				}
+		boolean flag = false;
+		boolean idFlag = false;
+		boolean emailFlag = false;
+		
+		for (Users user1 : userList) {
+			if (!user1.getEmailId().equals(userEdit.getEmailId())) {
+				emailFlag = true;
+			} else {
+				emailFlag = false;
+				break;
 			}
 		}
-
-		if (flag) {
+		for (Users user1 : userList) {
+			if (user1.getId() == userEdit.getId()) {
+				if(!user1.getEmailId().equalsIgnoreCase(userEdit.getEmailId())) {
+					idFlag = true;	
+				}
+				break;
+			}
+		}
+		if (emailFlag && idFlag) {
 			Users user = userRepository.getById(userEdit.getId());
 			user.setEmailId(userEdit.getEmailId());
 			userRepository.save(user);
-			modelMapper.map(user, userEdit);
+			flag = true;
 		}
 		return flag;
 	}
